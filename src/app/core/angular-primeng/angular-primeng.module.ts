@@ -18,18 +18,13 @@ const primengModule = [
   ButtonModule,
   MenubarModule,
   CardModule,
-  MenuModule
+  MenuModule,
   // MenuItem
-]
+];
 
 @NgModule({
   declarations: [],
-  imports: [
-    CommonModule,
-    ...primengModule
-  ],
-  exports: [
-    ...primengModule
-  ]
+  imports: [CommonModule, ...primengModule],
+  exports: [...primengModule],
 })
-export class AngularPrimengModule { }
+export class AngularPrimengModule {}

@@ -8,24 +8,24 @@ const routes: Routes = [
   {
     path: '',
     pathMatch: 'full',
-    redirectTo: 'view-leave'
+    redirectTo: 'view-leave',
   },
   {
     path: 'add-leave',
-    component: AddLeaveComponent
+    component: AddLeaveComponent,
   },
   {
     path: 'view-leave',
-    component: ViewLeaveComponent
+    component: ViewLeaveComponent,
   },
   {
     path: 'edit-leave/:id',
-    component: DetailsLeaveComponent
-  }
+    component: DetailsLeaveComponent,
+  },
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}

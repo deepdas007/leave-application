@@ -1,47 +1,101 @@
-<div>
-  <div>
-    <h1>Leave Application</h1>
-  </div>
+<div id="leaveApplicationSection">
+  <div class="card">
+    <div class="card-body">
+      <div class="leave-app-heading">
+        <h1>Leave Application</h1>
+      </div>
 
-  <div>
-    <form [formGroup]="leaveForm" (ngSubmit)="onFormSubmit()">
-      <span class="p-float-label form-group">
-        <input id="float-input" formControlName="emp_id" type="text" pInputText>
-        <label for="float-input">Employee ID</label>
-      </span>
-      <span class="p-float-label form-group">
-        <input id="fName" formControlName="f_name" type="text" pInputText>
-        <label for="fName">First Name</label>
-      </span>
+      <div class="leave-app-forms">
+        <form [formGroup]="leaveForm" (ngSubmit)="onFormSubmit()">
+          <span class="p-float-label form-group">
+            <input
+              class="form-input"
+              id="float-input"
+              formControlName="emp_id"
+              type="text"
+              pInputText
+            />
+            <label for="float-input">Employee ID</label>
+          </span>
+          <span class="p-float-label form-group">
+            <input
+              class="form-input"
+              id="fName"
+              formControlName="f_name"
+              type="text"
+              pInputText
+            />
+            <label for="fName">First Name</label>
+          </span>
 
-      <span class="p-float-label form-group">
-        <input id="lName" formControlName="l_name" type="text" pInputText>
-        <label for="lName">Last Name</label>
-      </span>
+          <span class="p-float-label form-group">
+            <input
+              class="form-input"
+              id="lName"
+              formControlName="l_name"
+              type="text"
+              pInputText
+            />
+            <label for="lName">Last Name</label>
+          </span>
 
-      <!-- <span class="p-float-label">
-        <p-inputMask id="float-input" [(ngModel)]="user_phone" mask="99999-99999"></p-inputMask>
-        <label for="float-input">Phone No</label>
-      </span> -->
+          <!-- <span class="p-float-label">
+            <p-inputMask id="float-input" [(ngModel)]="user_phone" mask="99999-99999"></p-inputMask>
+            <label for="float-input">Phone No</label>
+          </span> -->
 
-      <span class="p-float-label form-group">
-        <p-calendar id="leaveStartDate" formControlName="leaveStartDate" name="leave-date" [showButtonBar]="true" [minDate]="minDateValue" [maxDate]="maxDateValue" [readonlyInput]="true"></p-calendar>
-        <label for="leaveStartDate">Start Date</label>
-      </span>
+          <span class="p-float-label form-group calender-span">
+            <p-calendar
+              class="form-input"
+              id="leaveStartDate"
+              formControlName="leaveStartDate"
+              name="leave-date"
+              [showButtonBar]="true"
+              [minDate]="minDateValue"
+              [maxDate]="maxDateValue"
+              [readonlyInput]="true"
+            ></p-calendar>
+            <label for="leaveStartDate">Start Date</label>
+          </span>
 
-      <span class="p-float-label form-group">
-        <p-calendar id="leaveEndDate" formControlName="leaveEndDate" name="leave-date" [showButtonBar]="true" [minDate]="minDateValue" [maxDate]="maxDateValue" [readonlyInput]="true"></p-calendar>
-        <label for="leaveEndDate">End Date</label>
-      </span>
+          <span class="p-float-label form-group calender-span">
+            <p-calendar
+              class="form-input"
+              id="leaveEndDate"
+              formControlName="leaveEndDate"
+              name="leave-date"
+              [showButtonBar]="true"
+              [minDate]="minDateValue"
+              [maxDate]="maxDateValue"
+              [readonlyInput]="true"
+            ></p-calendar>
+            <label for="leaveEndDate">End Date</label>
+          </span>
 
-      <span class="p-float-label form-group">
-        <textarea pInputTextarea id="leaveReason" formControlName="leaveReason" [rows]="5" [cols]="30" [autoResize]="true"></textarea>
-        <label for="leaveReason">Reason for Leave</label>
-      </span>
+          <span class="p-float-label form-group">
+            <textarea
+              class="form-input"
+              pInputTextarea
+              id="leaveReason"
+              formControlName="leaveReason"
+              [rows]="5"
+              [cols]="30"
+              [autoResize]="true"
+            ></textarea>
+            <label for="leaveReason">Reason for Leave</label>
+          </span>
 
-      <span class="form-group">
-        <button pButton pRipple type="submit" label="Submit" class="p-button-rounded p-button-success"></button>
-      </span>
-    </form>
+          <span class="form-group">
+            <button
+              pButton
+              pRipple
+              type="submit"
+              label="Submit"
+              class="p-button-rounded p-button-success custom-btn"
+            ></button>
+          </span>
+        </form>
+      </div>
+    </div>
   </div>
 </div>

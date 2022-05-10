@@ -1,0 +1,44 @@
+#leaveApplicationSection {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 90vh;
+}
+
+#leaveApplicationSection .card {
+  padding: 2rem;
+  width: 30vw;
+}
+
+#leaveApplicationSection
+  .card
+  .card-body
+  .leave-app-forms
+  .form-group
+  .form-input {
+  width: 100% !important;
+}
+
+#leaveApplicationSection .card .card-body .leave-app-forms .form-group {
+  margin: 2rem auto !important;
+}
+
+#leaveApplicationSection
+  .card
+  .card-body
+  .leave-app-forms
+  .form-group
+  .custom-btn {
+  width: 100%;
+  transition: 0.25s ease-in-out;
+}
+
+#leaveApplicationSection
+  .card
+  .card-body
+  .leave-app-forms
+  .form-group
+  .custom-btn:hover {
+  color: #16a34a;
+  background: #fff;
+}
