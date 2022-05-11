@@ -2,7 +2,12 @@ import { Component, NgZone, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
 import { PrimeNGConfig } from 'primeng/api';
-import { CrudService } from 'src/app/services/crud.service';
+import { AddLeaveService } from 'src/app/services/add-leave/add-leave.service';
+
+interface LeaveTypes {
+  name: string;
+  value: string;
+}
 
 @Component({
   selector: 'app-add-leave',
@@ -11,14 +16,18 @@ import { CrudService } from 'src/app/services/crud.service';
 })
 export class AddLeaveComponent implements OnInit {
   emp_id: string = '';
-  f_name: string = '';
-  l_name: string = '';
-  leaveStartDate!: Date;
-  leaveEndDate!: Date;
+  emp_username: string = '';
+  // f_name: string = '';
+  // l_name: string = '';
+  // leaveStartDate!: Date;
+  // leaveEndDate!: Date;
+  // leaveReason: string = '';
+  leaveTypes: LeaveTypes[] = [];
+  selectedLeaveType!: LeaveTypes;
+
   minDateValue!: Date;
   maxDateValue!: Date;
   invalidDates: Array<Date> = [];
-  leaveReason: string = '';
 
   leaveForm: FormGroup;
 
@@ -26,7 +35,7 @@ export class AddLeaveComponent implements OnInit {
     public formBuilder: FormBuilder,
     private router: Router,
     private ngZone: NgZone,
-    private crudService: CrudService,
+    private addLeave: AddLeaveService,
     private primengConfig: PrimeNGConfig
   ) {
     this.leaveForm = this.formBuilder.group({
@@ -35,8 +44,36 @@ export class AddLeaveComponent implements OnInit {
       l_name: [''],
       leaveStartDate: [''],
       leaveEndDate: [''],
+      selectedLeaveType: [''],
       leaveReason: [''],
     });
+
+    this.leaveTypes = [
+      {
+        name: 'Paid Leave',
+        value: 'paid_leave',
+      },
+      {
+        name: 'Casual Leave',
+        value: 'casual_leave',
+      },
+      {
+        name: 'Sick Leave',
+        value: 'sick_leave',
+      },
+      {
+        name: 'Marriage Leave',
+        value: 'marriage_leave',
+      },
+      {
+        name: 'Maternity Leave',
+        value: 'materinity_leave',
+      },
+      {
+        name: 'Paternity Leave',
+        value: 'paternity_leave',
+      },
+    ];
   }
 
   ngOnInit(): void {
@@ -65,15 +102,11 @@ export class AddLeaveComponent implements OnInit {
 
   onFormSubmit() {
     console.log('Form Value -', this.leaveForm.value);
-
-    this.crudService.AddLeave(this.leaveForm.value).subscribe(
-      (data) => {
-        console.log('Leave Application Added Successfully!', data);
-        // this.ngZone.run(() => this.router.navigateByUrl('/view-leave'))
-      },
-      (error) => {
-        console.log('ERROR ON FORM SUBMIT -', error);
-      }
-    );
+    this.addLeave
+      .addLeaveApplication(this.leaveForm.value)
+      .subscribe((data) => {
+        console.log('Application submitted successfully', data);
+        this.ngZone.run(() => this.router.navigateByUrl('/view-leave'));
+      });
   }
 }

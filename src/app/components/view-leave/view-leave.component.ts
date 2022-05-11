@@ -1,15 +1,31 @@
 import { Component, OnInit } from '@angular/core';
+import { ViewLeave } from 'src/app/models/viewLeave';
+import { ViewEmployeeService } from 'src/app/services/view-employee/view-employee.service';
+import { ViewLeaveService } from 'src/app/services/view-leave/view-leave.service';
 
 @Component({
   selector: 'app-view-leave',
   templateUrl: './view-leave.component.html',
-  styleUrls: ['./view-leave.component.css']
+  styleUrls: ['./view-leave.component.css'],
 })
 export class ViewLeaveComponent implements OnInit {
+  leaves: ViewLeave[] = [];
 
-  constructor() { }
+  constructor(
+    private viewLeaveService: ViewLeaveService,
+    private viewEmployeeService: ViewEmployeeService
+  ) {}
 
   ngOnInit(): void {
+    this.viewLeaveService.viewLeaveData().subscribe((data) => {
+      console.log('Recieved Data', data);
+      this.leaves = data;
+    });
+
+    this.viewEmployeeService.fetchEmployee().subscribe((data) => {
+      console.log('List of Employees', data);
+    });
   }
 
+  selectedLeave(leave: ViewLeave) {}
 }

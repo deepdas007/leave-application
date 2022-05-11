@@ -8,6 +8,8 @@ import { ButtonModule } from 'primeng/button';
 import { MenubarModule } from 'primeng/menubar';
 import { MenuModule } from 'primeng/menu';
 import { CardModule } from 'primeng/card';
+import { TableModule } from 'primeng/table';
+import { DropdownModule } from 'primeng/dropdown';
 import { MenuItem } from 'primeng/api';
 
 const primengModule = [
@@ -19,6 +21,8 @@ const primengModule = [
   MenubarModule,
   CardModule,
   MenuModule,
+  TableModule,
+  DropdownModule,
   // MenuItem
 ];
 

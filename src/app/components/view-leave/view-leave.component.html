@@ -1,1 +1,36 @@
-<p>view-leave works!</p>
+<div class="card">
+  <h1 *ngIf="leaves.length <= 0">Sorry, no leave data available!</h1>
+
+  <p-table [value]="leaves" *ngIf="leaves.length > 0">
+    <ng-template pTemplate="header">
+      <tr>
+        <th>Emp ID</th>
+        <th>Name</th>
+        <th>From</th>
+        <th>To</th>
+        <th>Leave Type</th>
+        <th>Leave Reason</th>
+        <th>Details</th>
+      </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-leaves>
+      <tr>
+        <td>{{ leaves.emp_id }}</td>
+        <td>{{ leaves.f_name }} {{ leaves.l_name }}</td>
+        <td>{{ leaves.leaveStartDate }}</td>
+        <td>{{ leaves.leaveEndDate }}</td>
+        <td>{{ leaves.selectedLeaveType }}</td>
+        <td>{{ leaves.leaveReason }}</td>
+        <td>
+          <button
+            type="button"
+            pButton
+            pRipple
+            icon="pi-external-link"
+            (click)="selectedLeave(leaves)"
+          ></button>
+        </td>
+      </tr>
+    </ng-template>
+  </p-table>
+</div>
