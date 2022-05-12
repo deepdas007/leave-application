@@ -102,14 +102,14 @@ export class AddLeaveComponent implements OnInit {
     let invalidDate = new Date();
     invalidDate.setDate(today.getDate() - 1);
     this.invalidDates = [today, invalidDate];
-    console.log('This is min value', this.minDateValue);
+    //console.log('This is min value', this.minDateValue);
 
     this.viewEmployeeService.fetchEmployee().subscribe((data: any) => {
       console.log('List of Employees', data);
       for (let i = 0; i < data.length; i++) {
         this.emp_details.push(data[i]);
       }
-      console.log('Employee Details', this.emp_details);
+      //console.log('Employee Details', this.emp_details);
     });
   }
 
@@ -122,7 +122,7 @@ export class AddLeaveComponent implements OnInit {
     this.addLeave
       .addLeaveApplication(this.leaveForm.value)
       .subscribe((data) => {
-        console.log('Application submitted successfully', data);
+        //console.log('Application submitted successfully', data);
         this.ngZone.run(() => this.router.navigateByUrl('/view-leave'));
       });
   }

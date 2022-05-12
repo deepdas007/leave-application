@@ -59,7 +59,7 @@ export class DetailsLeaveComponent implements OnInit {
 
   updateForm() {
     this.updateLeaveService.onUpdate(this.newForm.value).subscribe((data) => {
-      console.log('Successfully Changed Database', data);
+      console.log('Successfully Changed Database');
     });
   }
 }

@@ -4,6 +4,11 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule } from '@angular/common/http';
 
+//Firebase
+import { FirebaseAppModule } from '@angular/fire/app';
+import { FirebaseStorage } from '@angular/fire/storage';
+import { FirestoreModule } from '@angular/fire/firestore';
+
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { AddLeaveComponent } from './components/add-leave/add-leave.component';
@@ -21,6 +26,8 @@ import { AngularMaterialModule } from './core/angular-material/angular-material.
   ],
   imports: [
     BrowserModule,
+    FirebaseAppModule,
+    FirestoreModule,
     AppRoutingModule,
     BrowserAnimationsModule,
     HttpClientModule,

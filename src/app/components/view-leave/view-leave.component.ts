@@ -21,13 +21,13 @@ export class ViewLeaveComponent implements OnInit {
 
   ngOnInit(): void {
     this.viewLeaveService.viewLeaveData().subscribe((data) => {
-      console.log('Recieved Data', data);
+      // console.log('Recieved Data', data);
       this.leaves = data;
     });
 
-    this.viewEmployeeService.fetchEmployee().subscribe((data) => {
-      console.log('List of Employees', data);
-    });
+    // this.viewEmployeeService.fetchEmployee().subscribe((data) => {
+    //   console.log('List of Employees', data);
+    // });
   }
 
   openDetails(leave: ViewLeave) {
