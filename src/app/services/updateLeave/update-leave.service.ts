@@ -5,10 +5,10 @@ import { environment } from 'src/environments/environment';
 @Injectable({
   providedIn: 'root',
 })
-export class ViewEmployeeService {
+export class UpdateLeaveService {
   constructor(private http: HttpClient) {}
 
-  fetchEmployee() {
-    return this.http.get(environment.API_URL + '/%20/employee.json');
+  onUpdate(form: any) {
+    return this.http.post(environment.API_URL + '/leaves.json', form);
   }
 }

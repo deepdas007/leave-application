@@ -1,8 +1,10 @@
 import { Component, NgZone, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
 import { PrimeNGConfig } from 'primeng/api';
+import { map, Observable, startWith } from 'rxjs';
 import { AddLeaveService } from 'src/app/services/add-leave/add-leave.service';
+import { ViewEmployeeService } from 'src/app/services/view-employee/view-employee.service';
 
 interface LeaveTypes {
   name: string;
@@ -17,26 +19,29 @@ interface LeaveTypes {
 export class AddLeaveComponent implements OnInit {
   emp_id: string = '';
   emp_username: string = '';
-  // f_name: string = '';
-  // l_name: string = '';
-  // leaveStartDate!: Date;
-  // leaveEndDate!: Date;
-  // leaveReason: string = '';
+  f_name: string = '';
+  l_name: string = '';
+  leaveStartDate!: Date;
+  leaveEndDate!: Date;
+  leaveReason: string = '';
   leaveTypes: LeaveTypes[] = [];
   selectedLeaveType!: LeaveTypes;
+  emp_info: Object = {};
 
   minDateValue!: Date;
   maxDateValue!: Date;
   invalidDates: Array<Date> = [];
 
   leaveForm: FormGroup;
+  emp_details: any[] = [];
 
   constructor(
     public formBuilder: FormBuilder,
     private router: Router,
     private ngZone: NgZone,
     private addLeave: AddLeaveService,
-    private primengConfig: PrimeNGConfig
+    private primengConfig: PrimeNGConfig,
+    private viewEmployeeService: ViewEmployeeService
   ) {
     this.leaveForm = this.formBuilder.group({
       emp_id: [''],
@@ -98,6 +103,18 @@ export class AddLeaveComponent implements OnInit {
     invalidDate.setDate(today.getDate() - 1);
     this.invalidDates = [today, invalidDate];
     console.log('This is min value', this.minDateValue);
+
+    this.viewEmployeeService.fetchEmployee().subscribe((data: any) => {
+      console.log('List of Employees', data);
+      for (let i = 0; i < data.length; i++) {
+        this.emp_details.push(data[i]);
+      }
+      console.log('Employee Details', this.emp_details);
+    });
+  }
+
+  changeInput(event: any) {
+    console.log(event);
   }
 
   onFormSubmit() {

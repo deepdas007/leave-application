@@ -5,7 +5,7 @@
 export const environment = {
   production: false,
   API_URL:
-    'https://leave-application-7d97b-default-rtdb.asia-southeast1.firebasedatabase.app/ ',
+    'https://leave-application-7d97b-default-rtdb.asia-southeast1.firebasedatabase.app/',
 };
 
 /*

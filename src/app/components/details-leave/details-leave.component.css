@@ -1,0 +1,22 @@
+.card {
+  padding: 2rem;
+  margin-top: 20%;
+}
+
+.p-float-label {
+  margin: 2rem 1rem;
+}
+
+.p-float-label .form-input {
+  width: 100% !important;
+}
+
+.custom-btn {
+  width: 200px;
+  transition: 0.25s ease-in-out;
+}
+
+.card form .form-group .custom-btn:hover {
+  background: #fff;
+  color: rgb(245, 162, 21);
+}

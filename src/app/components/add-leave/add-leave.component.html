@@ -10,25 +10,23 @@
           <span class="p-float-label form-group">
             <input
               class="form-input"
-              id="float-input"
+              id="float-input empId"
               formControlName="emp_id"
               type="text"
               pInputText
+              [matAutocomplete]="auto"
               [required]="true"
             />
             <label for="float-input">Employee ID</label>
+            <mat-autocomplete #auto="matAutocomplete">
+              <mat-option
+                *ngFor="let empId of emp_details"
+                [value]="empId.emp_id"
+              >
+                {{ empId.emp_id }}
+              </mat-option>
+            </mat-autocomplete>
           </span>
-
-          <!-- <span class="p-float-label form-group">
-            <input
-              class="form-input"
-              id="float-input"
-              type="email"
-              [disabled]="emp_id != ''"
-              pInputText
-            />
-            <label for="float-input">Email ID</label>
-          </span> -->
 
           <span class="p-float-label form-group">
             <input
@@ -57,7 +55,6 @@
               class="form-input"
               id="leaveStartDate"
               formControlName="leaveStartDate"
-              name="leave-date"
               [showButtonBar]="true"
               [minDate]="minDateValue"
               [maxDate]="maxDateValue"
@@ -72,7 +69,6 @@
               class="form-input"
               id="leaveEndDate"
               formControlName="leaveEndDate"
-              name="leave-date"
               [showButtonBar]="true"
               [minDate]="minDateValue"
               [maxDate]="maxDateValue"
@@ -82,7 +78,7 @@
             <label for="leaveEndDate">End Date</label>
           </span>
 
-          <span class="p-float-label form-group">
+          <span class="p-float-label form-group" style="width: 100%">
             <p-dropdown
               class="form-input"
               [options]="leaveTypes"
@@ -92,6 +88,7 @@
               placeholder="Select Leave Type"
               [showClear]="true"
               [required]="true"
+              [style]="{ minWidth: '100%' }"
             ></p-dropdown>
           </span>
 
@@ -116,7 +113,6 @@
               type="submit"
               label="Submit"
               class="p-button-rounded p-button-success custom-btn"
-              [disabled]="leaveForm.invalid"
             ></button>
           </span>
         </form>

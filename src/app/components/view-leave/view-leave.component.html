@@ -17,8 +17,8 @@
       <tr>
         <td>{{ leaves.emp_id }}</td>
         <td>{{ leaves.f_name }} {{ leaves.l_name }}</td>
-        <td>{{ leaves.leaveStartDate }}</td>
-        <td>{{ leaves.leaveEndDate }}</td>
+        <td>{{ leaves.leaveStartDate | date: "dd/MM/yyyy" }}</td>
+        <td>{{ leaves.leaveEndDate | date: "dd/MM/yyyy" }}</td>
         <td>{{ leaves.selectedLeaveType }}</td>
         <td>{{ leaves.leaveReason }}</td>
         <td>
@@ -26,8 +26,8 @@
             type="button"
             pButton
             pRipple
-            icon="pi-external-link"
-            (click)="selectedLeave(leaves)"
+            icon="pi pi-pencil"
+            (click)="openDetails(leaves)"
           ></button>
         </td>
       </tr>

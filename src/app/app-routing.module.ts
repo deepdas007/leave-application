@@ -19,7 +19,7 @@ const routes: Routes = [
     component: ViewLeaveComponent,
   },
   {
-    path: 'edit-leave/:id',
+    path: 'edit-leave',
     component: DetailsLeaveComponent,
   },
 ];

@@ -1,1 +1,93 @@
-<p>details-leave works!</p>
+<div class="card">
+  <h1>Update Leave Application</h1>
+  <form [formGroup]="newForm" (ngSubmit)="updateForm()">
+    <span class="p-float-label">
+      <input
+        id="float-input"
+        class="form-input"
+        type="text"
+        pInputText
+        [disabled]="true"
+        [value]="data.emp_id"
+      />
+      <label for="float-input">Username</label>
+    </span>
+
+    <span class="p-float-label">
+      <input
+        id="float-input f_name"
+        class="form-input"
+        type="text"
+        pInputText
+        [disabled]="true"
+        [value]="data.f_name"
+      />
+      <label for="f_name">First Name</label>
+    </span>
+
+    <span class="p-float-label">
+      <input
+        id="float-input l_name"
+        class="form-input"
+        type="text"
+        pInputText
+        [disabled]="true"
+        [value]="data.l_name"
+      />
+      <label for="l_name">Last Name</label>
+    </span>
+
+    <span class="p-float-label" style="width: 95%">
+      <p-calendar
+        class="form-input"
+        id="leaveStartDate"
+        formControlName="leaveStartDate"
+        [showButtonBar]="true"
+        [minDate]="minDateValue"
+        [maxDate]="maxDateValue"
+        [readonlyInput]="true"
+        [required]="true"
+        (value)="(data.leaveStartDate)"
+        [style]="{ minWidth: '100%' }"
+      ></p-calendar>
+      <label for="leaveStartDate">Start Date</label>
+    </span>
+
+    <span class="p-float-label" style="width: 95%">
+      <p-calendar
+        class="form-input"
+        id="leaveEndDate"
+        formControlName="leaveEndDate"
+        [showButtonBar]="true"
+        [minDate]="minDateValue"
+        [maxDate]="maxDateValue"
+        [readonlyInput]="true"
+        [required]="true"
+        [style]="{ minWidth: '100%' }"
+      ></p-calendar>
+      <label for="leaveEndDate">End Date</label>
+    </span>
+
+    <span class="p-float-label form-group" style="width: 95%">
+      <p-dropdown
+        class="form-input"
+        optionLabel="name"
+        optionValue="value"
+        (placeholder)="(data.selectedLeaveType)"
+        [showClear]="true"
+        [required]="true"
+        [style]="{ minWidth: '100%' }"
+      ></p-dropdown>
+    </span>
+
+    <span class="form-group">
+      <button
+        pButton
+        pRipple
+        type="submit"
+        label="Update"
+        class="p-button-rounded p-button-warning custom-btn"
+      ></button>
+    </span>
+  </form>
+</div>
